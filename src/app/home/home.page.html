@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Planejamento financeiro
+     </ion-title>
+     <ion-buttons [routerLink]="['/planejamento-financeiro']" slot="primary">
+      <ion-button>
+        <ion-icon name="add-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <h3>Bem vindo, aqui você podera administrar suas finanças</h3><br />
+
+  <div *ngIf="plano.length > 0">
+    <div *ngFor="let listar of plano">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>Seu planejamento</ion-card-subtitle>
+          <ion-card-title>
+            <h2>{{listar.nome}}</h2>
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <h4>seus faturamento: {{listar.faturamento}}</h4>
+          <h4>Seus custos: R$: {{listar.gasto}} </h4>
+        </ion-card-content>
+      </ion-card>
+
+    </div>
+
+  </div>
+
+  <div *ngIf="plano.length === 0">
+    <br/>
+
+    <p>Não há nenhum planejamento cadastrado</p>
+
+    <ion-button expand="block" [routerLink]="['/planejamento-financeiro']">
+      Criar novo planejamento
+    </ion-button>
+  </div>
+</ion-content>
